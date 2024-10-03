@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Job Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #a2c9b7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #e7f0f4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            padding-right: 2px;
+        }
+
+        input[type="text"], 
+        select, 
+        textarea, 
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            padding-right: 3px;
+        }
+
+        button {
+            background-color: #55AD9B;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #55AD9B;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Enter Job Data</h1>
+
+    <div class="form-container">
+        <form id="jobForm">
+            <!-- Job Title -->
+            <div class="form-group">
+                <label for="jobTitle">Job Title *</label>
+                <input type="text" id="jobTitle" name="jobTitle" required>
+            </div>
+
+            <!-- Job Type -->
+            <div class="form-group">
+                <label for="jobType">Job Type *</label>
+                <select id="jobType" name="jobType" required>
+                    <option value="">Select Job Type</option>
+                    <option value="fulltime">Full-Time</option>
+                    <option value="parttime">Part-Time</option>
+                    <option value="freelance">Freelance</option>
+                </select>
+            </div>
+
+            <!-- Department -->
+            <div class="form-group">
+                <label for="department">Department *</label>
+                <select id="department" name="department" required>
+                    <option value="">Select Department</option>
+                    <option value="engineering">Engineering</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="hr">Human Resources</option>
+                    <option value="finance">Finance</option>
+                </select>
+            </div>
+
+            <!-- Country -->
+            <div class="form-group">
+                <label for="country">Country *</label>
+                <select id="country" name="country" required>
+                    <option value="">Select Country</option>
+                    <option value="usa">USA</option>
+                    <option value="india">India</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="canada">Canada</option>
+                </select>
+            </div>
+
+            <!-- Job Description -->
+            <div class="form-group">
+                <label for="jobDescription">Job Description *</label>
+                <textarea id="jobDescription" name="jobDescription" rows="5" required></textarea>
+            </div>
+
+            <!-- Opening Date -->
+            <div class="form-group">
+                <label for="openingDate">Opening Date *</label>
+                <input type="date" id="openingDate" name="openingDate" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('jobForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent default form submission
+
+            // Get form data
+            const formData = new FormData(this);
+            const jobTitle = formData.get('jobTitle');
+            const jobType = formData.get('jobType');
+            const department = formData.get('department');
+            const country = formData.get('country');
+            const jobDescription = formData.get('jobDescription');
+            const openingDate = formData.get('openingDate');
+
+            // Simple validation (can be expanded)
+            if (!jobTitle || !jobType || !department || !country || !jobDescription || !openingDate) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Mock submission (replace with actual AJAX or form submission)
+            alert('Job data submitted successfully!');
+            console.log({
+                jobTitle,
+                jobType,
+                department,
+                country,
+                jobDescription,
+                openingDate
+            });
+
+            // Optionally, reset form after submission
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
